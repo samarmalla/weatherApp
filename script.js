@@ -24,6 +24,7 @@ const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&
     fetch(forecastUrl).then(response=>response.json()).then(data=>{displayHourlyForecast(data.list);})
     .catch(error=>{console.error('Error fetching hourly forecast data:', error);
         alert('Error fetching hourly forecast data. Please try again');
+        document.getElementById('forecast').innerHTML = "";
     });
 
 
@@ -36,6 +37,7 @@ function displayWeather(data){
     const tempIcon = document.getElementById('weatherImg');
     const humiInfo = document.getElementById('humidity');
     const windInfo = document.getElementById('windSpeed');
+    const resetBtn = document.getElementById('resetBtn');
 
     //clear previous content
     tempInfo.innerHTML = "";
@@ -46,6 +48,10 @@ function displayWeather(data){
 
     if(data.cod === '404'){
         tempInfo.innerHTML = `<p>${data.message}</p>`;
+        tempIcon.src = "weatherLogo.jpg"; // Show default logo
+        tempIcon.alt = "weather logo";
+        resetBtn.disabled = true;
+        document.getElementById('forecast').innerHTML = ""; // Hide forecast
     } else {
         const cityName = data.name;
         const temperature = Math.round(data.main.temp - 273.15);
@@ -56,12 +62,14 @@ function displayWeather(data){
         const windSpeed = data.wind.speed;  
         const windDirection = data.wind.deg;
 
-        tempInfo.innerHTML = `<h2>${cityName}</h2><p>${temperature}&deg;C</p>`;
-        weatherCondition.innerHTML = `<p>${description}</p>`;
+        tempInfo.innerHTML = `<h2>${cityName}</h2><p>Temp:${temperature}&deg;C</p>`;
+        weatherCondition.innerHTML = `<p>Condition:${description}</p>`;
         tempIcon.src = iconUrl;
         tempIcon.alt = description;
         humiInfo.innerHTML = `<p>Humidity: ${humidity}%</p>`;
         windInfo.innerHTML = `<p>Wind: ${windSpeed} m/s, ${windDirection}&deg;</p>`;
+        resetBtn.disabled = false; // Enable reset button
+
     }
 }
 
@@ -81,6 +89,19 @@ document.getElementById("city").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         getWeather();
     }
+});
+
+document.getElementById("resetBtn").addEventListener("click", function() {
+    document.getElementById("city").value = "";
+    document.getElementById("temp").innerHTML = "";
+    document.getElementById("condition").innerHTML = "";
+    document.getElementById("humidity").innerHTML = "";
+    document.getElementById("windSpeed").innerHTML = "";
+    document.getElementById("weatherImg").src ="weatherLogo.jpg";
+    document.getElementById("weatherImg").alt = "weather logo";
+    document.getElementById("forecast").innerHTML = "";
+    this.disabled = true; // Disable reset button after reset
+
 });
 
 
