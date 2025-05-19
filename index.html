@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="/weatherApp/style.css">
+    <title>Simple Weather App</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-      <div id="weatherContainer"> 
-        <h1>Weather App</h1> 
-        <input type="text" id="city" placeholder="Enter city">
-        <button onclick="getWeather()">Search</button>
-
-        <img src="weatherImg" alt="Image">
-        <div id="temp">
-            
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <input type="text" id="city" placeholder="Enter city name">
+        <button onclick="getWeather()">Get Weather</button>
+        <div id="weatherDisplay">
+            <img id="weatherImg" src="/weatherApp/weatherLogo.jpg" alt="" />
+            <div id="temp"></div>
+            <div id="condition"></div>
+            <div id="humidity"></div>
+            <div id="windSpeed"></div>
         </div>
-        <div id="condition"></div>
-        <div id="humidity"></div>
-        <div id="windSpeed"></div>
-      </div>  
+        <div id="forecast"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
