@@ -1,8 +1,75 @@
 body{
-    background-color:cornflowerblue;
+    background-color:azure;
     display: flex;
      align-items: center; 
     justify-content: center;
     height: 100vh;
     margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+#weatherContainer{
+
+    background-color:cornflowerblue;
+    padding: 20px;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 1px solid gainsboro;
+    /* backdrop-filter: blur(100px); */
+    text-align: center;
+    
+}
+
+h1, label, p{
+    color:rgb(0, 0, 0);
+    /* margin: 8px; */
+    
+}
+
+input{
+
+    width: calc(100%-16px); 
+    padding: 8px;
+    box-sizing:border-box; 
+    border-radius: 10px;
+    border: 1px solid gray;
+    box-shadow: 1px 1px 1px gray;
+    margin-top: 20px;
+}
+
+button{
+    background: darkslateblue;
+    color: aliceblue;
+    width: 85px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px black;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+button:hover{
+    background: rgb(60, 37, 158);
+}
+
+#temp p{
+    font-size: 60px;
+    margin-top: -30px;
+}
+
+#weather{
+    font-size: 20px;
+}
+
+#weatherImg{
+    width:200px;
+    height: 200px;
+    margin: 0 auto 10px;
+    margin-bottom: 0;
+    display: none;
+
 }
