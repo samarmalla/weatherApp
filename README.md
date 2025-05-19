@@ -19,7 +19,7 @@ This is a beginner-friendly web-based weather app that fetches real-time weather
 - OpenWeatherMap API
 
 ## 📷 Screenshot
-*(Insert screenshot here)*
+       ![alt text](image.png)
 
 ## 💡 How to Use
 1. Open the `index.html` in your browser.
